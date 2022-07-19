@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -11,9 +12,15 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+     /* Lister un event */
+
     public function index()
     {
-        //
+        $events = Event::all();
+
+        return response()->json(["events" => $events]);
     }
 
     /**
@@ -32,10 +39,28 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+/* Création d'un event */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'start' => 'required|string',
+            'end' => 'required|string',
+            'location' => 'required|string'
+        ]);
+
+        $event = Event::create([
+            'name' => $request->name,
+            'start' => $request->start,
+            'end' => $request->end,
+            'location' => $request->location,
+        ]);
+
+        return response()->json(['message' => 'Event créé', 'event' => $event], 201);
     }
+}
 
     /**
      * Display the specified resource.
