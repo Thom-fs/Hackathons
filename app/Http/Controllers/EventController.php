@@ -14,7 +14,7 @@ class EventController extends Controller
      */
 
 
-     /* Lister un event */
+    /* Lister un event */
 
     public function index()
     {
@@ -40,7 +40,7 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-/* Création d'un event */
+    /* Création d'un event */
 
     public function store(Request $request)
     {
@@ -60,7 +60,6 @@ class EventController extends Controller
 
         return response()->json(['message' => 'Event créé', 'event' => $event], 201);
     }
-}
 
     /**
      * Display the specified resource.
