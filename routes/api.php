@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\EventController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,6 @@ Route::get('/groups', [GroupController::class, 'index'])
 
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
+Route::post('/events', [EventController::class, 'store'])->name('events.store');
