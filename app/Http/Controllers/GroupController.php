@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -13,7 +14,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $group = Group::all();
+
+        return response()->json(["group" => $group]);
     }
 
     /**
@@ -34,7 +37,25 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'subject' => 'required|string',
+            'name' => 'required|string',
+            'room' => 'required|string',
+            'members' => 'required|string',
+            'grpabilities' => 'required|string'
+
+
+        ]);
+
+        $group = Group::create([
+            'subject' => $request->subject,
+            'name' => $request->name,
+            'room' => $request->room,
+            'members' => $request->members,
+            'grp_abilities' => $request->grpabilities
+        ]);
+
+        return response()->json(['message' => 'Groupe créé', 'group' => $group], 201);
     }
 
     /**

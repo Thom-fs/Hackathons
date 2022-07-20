@@ -1,0 +1,38 @@
+[
+    {
+        "type": "Directory",
+        "name": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\app\\Models",
+        "parent_id": null,
+        "fsPath": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\app\\Models",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "yEhAmVuDp9UsQvS1"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\database\\migrations",
+        "parent_id": null,
+        "fsPath": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\database\\migrations",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "wD4kY2qcICPEGyBV"
+    },
+    {
+        "type": "File",
+        "name": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\routes\\api.php",
+        "parent_id": null,
+        "fsPath": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\routes\\api.php",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "L870Oe5RsVdJ6noy"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\app\\Http\\Controllers",
+        "parent_id": null,
+        "fsPath": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\app\\Http\\Controllers",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "dDBnU8wQcFlyvHzj"
+    }
+]
