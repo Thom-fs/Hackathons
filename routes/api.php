@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SlotController;
 use App\Http\Controllers\EventController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
+
+Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
+
+Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');

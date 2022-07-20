@@ -58,7 +58,7 @@ class EventController extends Controller
             'location' => $request->location,
         ]);
 
-        return response()->json(['message' => 'Event créé', 'event' => $event], 201);
+        return response()->json(['message' => 'Evènement créé', 'event' => $event], 201);
     }
 
     /**
