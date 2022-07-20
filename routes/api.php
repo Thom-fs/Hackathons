@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\GroupUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +39,10 @@ Route::get('/registrations', [EventController::class, 'index'])
 
 Route::post('/registrations', [EventController::class, 'store'])
 ->name('registration.store');
+
+Route::get('/userAdd', [GroupUserController::class, 'index'])
+    ->name('userAdd.store');
+
+Route::post('/userAdd', [GroupUserController::class, 'store'])
+->name('userAdd.store');
+
