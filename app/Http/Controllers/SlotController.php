@@ -45,7 +45,7 @@ class SlotController extends Controller
             'title' => 'required|string',
             'start' => 'required|string',
             'duration' => 'required|string',
-            'teams' => 'required|string'
+            'teams' => 'required|integer'
         ]);
 
         $slot = Slot::create([
