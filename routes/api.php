@@ -32,3 +32,9 @@ Route::get('/events', [EventController::class, 'index'])
 
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
+
+Route::get('/registrations', [EventController::class, 'index'])
+    ->name('registration.store');
+
+Route::post('/registrations', [EventController::class, 'store'])
+->name('registration.store');
