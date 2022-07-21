@@ -43,12 +43,18 @@ Route::get('/events', [EventController::class, 'index'])
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
 
+Route::get('/events/{id}', [EventController::class, 'show'])
+    ->name('events.show');
+
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
 Route::get('/registrations', [EventController::class, 'index'])
     ->name('registration.index');
 
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
+/* GROUP USER */
 Route::get('/userAdd', [GroupUserController::class, 'index'])
     ->name('userAdd.store');
 
