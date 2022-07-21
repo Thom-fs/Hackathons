@@ -22,13 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+/* GROUP */
 Route::get('/groups', [GroupController::class, 'index'])
     ->name('groups.index');
 
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
+/* EVENT  */
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
 
@@ -43,6 +44,7 @@ Route::get('/registrations', [EventController::class, 'index'])
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
+/* GROUP USER */
 Route::get('/userAdd', [GroupUserController::class, 'index'])
     ->name('userAdd.store');
 
