@@ -15,4 +15,5 @@ yarn-error.log
 /.idea
 /.vscode
 dbdata/*
-/.favorites.json
+.favorites.json
+
