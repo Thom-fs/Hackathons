@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('room');
             $table->integer('members');
-            $table->string('grp_abilities');
+            $table->string('abilities');
             $table->timestamps();
         });
     }

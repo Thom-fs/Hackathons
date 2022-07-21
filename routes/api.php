@@ -27,8 +27,11 @@ Route::get('/groups', [GroupController::class, 'index'])
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
-
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
+
+Route::get('/events/{id}', [EventController::class, 'show'])
+    ->name('events.show');
+
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
