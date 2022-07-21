@@ -4,6 +4,7 @@ use App\Http\Controllers\SlotController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GroupUserController;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -58,3 +59,14 @@ Route::post('/userAdd', [GroupUserController::class, 'store'])
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
 
 Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');
+
+/*Authentification*/
+
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+
+Route::post('/auth/login', [AuthController::class, 'loginUser']);
+
+Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
+
+/*attribution des roles*/
+
