@@ -42,8 +42,19 @@ Route::get('/events', [EventController::class, 'index'])
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
 
+Route::get('/registrations', [EventController::class, 'index'])
+    ->name('registration.index');
+
+Route::post('/registrations', [EventController::class, 'store'])
+    ->name('registration.store');
+
 Route::get('/userAdd', [GroupUserController::class, 'index'])
     ->name('userAdd.store');
 
 Route::post('/userAdd', [GroupUserController::class, 'store'])
     ->name('userAdd.store');
+
+/*SLOTS*/
+Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
+
+Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');

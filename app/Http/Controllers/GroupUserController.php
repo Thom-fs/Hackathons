@@ -99,6 +99,11 @@ class GroupUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        {
+            $add = GroupUser::find($id);
+            $add->delete();
+
+            return redirect()->back();
+        }
     }
 }
