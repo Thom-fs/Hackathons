@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('slots', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->datetime('start');
-            $table->time('duration'); // ???????????????????????? a verifier en h / min
+            $table->time('start');
+            $table->string('duration'); // ???????????????????????? a verifier en h / min
             $table->integer('teams');
             $table->timestamps();
         });
