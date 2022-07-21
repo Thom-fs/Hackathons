@@ -58,6 +58,8 @@ class SlotController extends Controller
         return response()->json(['message' => 'Créneau créé', 'slot' => $slot], 201);
     }
 
+    /*pipi*/
+
     /**
      * Display the specified resource.
      *
