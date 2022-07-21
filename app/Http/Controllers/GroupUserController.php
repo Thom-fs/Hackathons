@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GroupUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupUserController extends Controller
 {
@@ -13,7 +15,10 @@ class GroupUserController extends Controller
      */
     public function index()
     {
-        //
+
+        $userGroupRegistration = GroupUser::all();
+
+        return response()->json(["userGroupRegistration" => $userGroupRegistration]);
     }
 
     /**
@@ -24,6 +29,7 @@ class GroupUserController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -34,7 +40,21 @@ class GroupUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        {
+            $request->validate([
+                'user_id' => 'required|string',
+                'group_id' => 'required|string',
+            ]);
+
+            $userAdd = GroupUser::create([
+
+                'user_id'=> Auth::user()->id,
+                'group_id' => $request->group_id,
+            ]);
+
+            return response()->json(['message' => 'Votre participation à été ajoutée', 'userAdd' => $userAdd], 201);
+        }
     }
 
     /**
@@ -79,6 +99,11 @@ class GroupUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        {
+            $add = GroupUser::find($id);
+            $add->delete();
+
+            return redirect()->back();
+        }
     }
 }

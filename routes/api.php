@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\SlotController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\GroupUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,8 +29,27 @@ Route::get('/groups', [GroupController::class, 'index'])
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
-
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
+
+Route::get('/events/{id}', [EventController::class, 'show'])
+    ->name('events.show');
+
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
+Route::get('/registrations', [EventController::class, 'index'])
+    ->name('registration.store');
+
+Route::post('/registrations', [EventController::class, 'store'])
+    ->name('registration.store');
+
+Route::get('/userAdd', [GroupUserController::class, 'index'])
+    ->name('userAdd.store');
+
+Route::post('/userAdd', [GroupUserController::class, 'store'])
+    ->name('userAdd.store');
+
+/*SLOTS*/
+Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
+
+Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');

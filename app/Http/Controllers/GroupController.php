@@ -16,7 +16,7 @@ class GroupController extends Controller
     {
         $group = Group::all();
 
-        return response()->json(["group" => $group]);
+        return response()->json(["groups" => $group]);
     }
 
     /**
@@ -41,8 +41,8 @@ class GroupController extends Controller
             'subject' => 'required|string',
             'name' => 'required|string',
             'room' => 'required|string',
-            'members' => 'required|string',
-            'grpabilities' => 'required|string'
+            'members' => 'required|integer',
+            'abilities' => 'required|string'
 
 
         ]);
@@ -52,7 +52,8 @@ class GroupController extends Controller
             'name' => $request->name,
             'room' => $request->room,
             'members' => $request->members,
-            'grp_abilities' => $request->grpabilities
+            'abilities' => $request->abilities,
+            'event_id' => $request->event_id
         ]);
 
         return response()->json(['message' => 'Groupe créé', 'group' => $group], 201);
