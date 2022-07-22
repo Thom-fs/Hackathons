@@ -24,19 +24,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-/*SLOTS*/
+/* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
 
 Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');
 
-/*GROUPS*/
-Route::get('/groups', [GroupController::class, 'index'])
+/* _________________________________GROUPS*/
+
+Route::get('/events/{event_id}/groups/{group_id}', [GroupController::class, 'show'])
+    ->name('groups.show');
+
+Route::get('/events/{event_id}/groups', [GroupController::class, 'index'])
     ->name('groups.index');
 
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
-/*EVENTS*/
+/* _________________________________EVENTS*/
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
 
@@ -54,19 +58,19 @@ Route::get('/registrations', [EventController::class, 'index'])
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
-/* GROUP USER */
+/* _________________________________GROUP USER */
 Route::get('/userAdd', [GroupUserController::class, 'index'])
     ->name('userAdd.store');
 
 Route::post('/userAdd', [GroupUserController::class, 'store'])
     ->name('userAdd.store');
 
-/*SLOTS*/
+/* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
 
 Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');
 
-/*Authentification*/
+/* _________________________________Authentification*/
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 
@@ -74,5 +78,4 @@ Route::post('/auth/login', [AuthController::class, 'loginUser']);
 
 Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
 
-/*attribution des roles*/
-
+/* _________________________________attribution des roles*/
