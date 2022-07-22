@@ -7,6 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\EventUserController;
 use App\Http\Controllers\GroupUserController;
+use App\Http\Controllers\ProfilController;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -56,6 +57,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 
     // Lien vers la table des compétences utilisateur "abilities"
     public function abilities(): HasOne
