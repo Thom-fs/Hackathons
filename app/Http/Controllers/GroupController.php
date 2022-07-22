@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Group;
 use Illuminate\Http\Request;
 
@@ -12,11 +13,11 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($event_id)
     {
-        $group = Group::all();
+        $event = Event::find($event_id);
 
-        return response()->json(["groups" => $group]);
+        return response()->json(["groups" => $event->groups]);
     }
 
     /**
@@ -65,9 +66,10 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($group_id)
     {
-        //
+        $group = Group::find($group_id);
+        return response()->json(['message' => '', 'group' => $group], 200);
     }
 
     /**
