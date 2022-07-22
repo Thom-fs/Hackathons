@@ -6,6 +6,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\GroupUserController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\ModifyProfilController;
+use App\Http\Controllers\AbilitiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -82,4 +84,21 @@ Route::post('/auth/login', [AuthController::class, 'loginUser']);
 
 Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
 
-/*attribution des roles*/
+/*modification profil*/
+
+Route::post('/modifyProfil', [ModifyProfilController::class, 'store'])
+->name('modifyProfil.store');
+
+Route::get('/modifyProfil/{id}', [ModifyProfilController::class, 'show'])
+->name('modifyProfil.show');
+
+/*Les compétences*/
+
+Route::post('/abilities', [AbilitiesController::class, 'store'])
+->name('abilities.store');
+
+Route::get('/abilities', [AbilitiesController::class, 'index'])
+->name('abilities.index ');
+
+
+

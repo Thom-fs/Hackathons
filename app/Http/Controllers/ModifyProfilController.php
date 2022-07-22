@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AbilitiesController extends Controller
+use function Ramsey\Uuid\v1;
+
+class ModifyProfil extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user_id)
+    public function index()
     {
-        $user= User::find($user_id);
-        return response()->json(["abilitties" => $user->abilities]);
+        //
     }
 
     /**
@@ -37,18 +38,7 @@ class AbilitiesController extends Controller
      */
     public function store(Request $request)
     {
-        {
-            $request->validate([
-                'user_id' => 'required|string',
-            ]);
 
-            $userAbilities =User::create([
-
-                'user_id'=> Auth::user()->id,
-            ]);
-
-            return response()->json(['message' => 'Compétences ajoutées', 'userAbilities' => $userAbilities], 201);
-        }
     }
 
     /**
@@ -59,7 +49,8 @@ class AbilitiesController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = User::find($id);
+            return response()->json(['message' => '', 'post' => $post], 200);
     }
 
     /**
@@ -82,7 +73,20 @@ class AbilitiesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = User::find($id);
+        $post->firstname = $request->input('firstname');
+        $post->lastname = $request->input('lastname');
+        $post->email = $request->input('email');
+        $post->password = $request->input('password');
+        $post->linkedin = $request->input('linkedin');
+        $post->github = $request->input('github');
+        $post->website = $request->input('website');
+        $post->portfolio = $request->input('portfolio');
+        $post->bio = $request->input('portfolio');
+        $post->picture = $request->input('picture');
+        $post->save();
+
+        return redirect()->back();
     }
 
     /**
