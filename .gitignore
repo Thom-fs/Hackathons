@@ -14,9 +14,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-dbdata/*
-<<<<<<< HEAD
 .favorites.json
-=======
->>>>>>> 1afaa41dbefc680b622e532668e8c96b64605a6e
-
+/dbdata
