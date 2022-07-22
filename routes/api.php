@@ -31,12 +31,11 @@ Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
 Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');
 
 /* _________________________________GROUPS*/
+Route::get('/groups/{id}', [GroupController::class, 'index'])
+    ->name('groups.index');
 
 Route::get('/events/{event_id}/groups/{group_id}', [GroupController::class, 'show'])
     ->name('groups.show');
-
-Route::get('/events/{event_id}/groups', [GroupController::class, 'index'])
-    ->name('groups.index');
 
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');

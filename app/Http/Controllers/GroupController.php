@@ -13,11 +13,11 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($event_id)
+    public function index($id)
     {
-        $event = Event::find($event_id);
+        $groups = Group::where('event_id', $id)->get();
 
-        return response()->json(["groups" => $event->groups]);
+        return response()->json(["groups" => $groups]);
     }
 
     /**
