@@ -4,6 +4,7 @@ use App\Http\Controllers\SlotController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GroupUserController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,12 @@ Route::post('/userAdd', [GroupUserController::class, 'store'])
     ->name('userAdd.store');
 
 /*SLOTS*/
-Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
+Route::get('/slots', [SlotController::class, 'index'])
+    ->name('slots.index');
 
-Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');
+Route::post('/slots', [SlotController::class, 'store'])
+    ->name('slots.store');
+
+// USER
+Route::get('/profil/{id}', [ProfilController::class, 'show'])
+    ->name('profil.show');
