@@ -5,6 +5,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GroupUserController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,11 +25,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+/*SLOTS*/
+Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
+
+Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');
+
+/*GROUPS*/
 Route::get('/groups', [GroupController::class, 'index'])
     ->name('groups.index');
 
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
+
+/*EVENTS*/
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
 
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
@@ -39,11 +50,12 @@ Route::get('/events/{id}', [EventController::class, 'show'])
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
 Route::get('/registrations', [EventController::class, 'index'])
-    ->name('registration.store');
+    ->name('registration.index');
 
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
+/* GROUP USER */
 Route::get('/userAdd', [GroupUserController::class, 'index'])
     ->name('userAdd.store');
 
@@ -60,3 +72,14 @@ Route::post('/slots', [SlotController::class, 'store'])
 // USER
 Route::get('/profil/{id}', [ProfilController::class, 'show'])
     ->name('profil.show');
+
+
+/*Authentification*/
+
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+
+Route::post('/auth/login', [AuthController::class, 'loginUser']);
+
+Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
+
+/*attribution des roles*/

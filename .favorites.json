@@ -1,38 +1,38 @@
 [
     {
-        "type": "Directory",
-        "name": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\app\\Models",
-        "parent_id": null,
-        "fsPath": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\app\\Models",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "yEhAmVuDp9UsQvS1"
-    },
-    {
-        "type": "Directory",
-        "name": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\database\\migrations",
-        "parent_id": null,
-        "fsPath": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\database\\migrations",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "wD4kY2qcICPEGyBV"
-    },
-    {
         "type": "File",
-        "name": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\routes\\api.php",
+        "name": "c:\\Users\\kevin\\Documents\\Bocal\\Hackathons\\routes\\api.php",
         "parent_id": null,
-        "fsPath": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\routes\\api.php",
+        "fsPath": "c:\\Users\\kevin\\Documents\\Bocal\\Hackathons\\routes\\api.php",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "L870Oe5RsVdJ6noy"
+        "id": "ShVsKwfGyoOq8k4U"
     },
     {
         "type": "Directory",
-        "name": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\app\\Http\\Controllers",
+        "name": "c:\\Users\\kevin\\Documents\\Bocal\\Hackathons\\app\\Http\\Controllers",
         "parent_id": null,
-        "fsPath": "c:\\wamp64\\www\\Laravel\\Nouveau dossier\\Hackathons\\app\\Http\\Controllers",
+        "fsPath": "c:\\Users\\kevin\\Documents\\Bocal\\Hackathons\\app\\Http\\Controllers",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "dDBnU8wQcFlyvHzj"
+        "id": "IpF35aiTA8qnVNyj"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\Users\\kevin\\Documents\\Bocal\\Hackathons\\database",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\kevin\\Documents\\Bocal\\Hackathons\\database",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "p7diYtNQaeGTfxks"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\Users\\kevin\\Documents\\Bocal\\Hackathons\\app\\Models",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\kevin\\Documents\\Bocal\\Hackathons\\app\\Models",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "6ywJKhCHx5u48caI"
     }
 ]
