@@ -33,10 +33,14 @@ Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
 Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');
 
 /* _________________________________GROUPS*/
-Route::get('/groups/{id}', [GroupController::class, 'index'])
+
+/**
+ * La route "groups.index" donne la liste des groupes liés à l'événement consulté, on lui passe donc event_id en argument {id}
+ */
+Route::get('/events/{event_id}/groups', [GroupController::class, 'index'])
     ->name('groups.index');
 
-Route::get('/events/{event_id}/groups/{group_id}', [GroupController::class, 'show'])
+Route::get('/groups/{group_id}', [GroupController::class, 'show'])
     ->name('groups.show');
 
 Route::post('/groups', [GroupController::class, 'store'])
@@ -61,6 +65,8 @@ Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
 /* _________________________________GROUP USER */
+
+// ******************* La route ci-dessous semble être une erreur, à confirmer par qui l'a créée ;)
 Route::get('/userAdd', [GroupUserController::class, 'index'])
     ->name('userAdd.store');
 
@@ -90,18 +96,15 @@ Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
 /*modification profil*/
 
 Route::post('/modifyProfil', [ModifyProfilController::class, 'store'])
-->name('modifyProfil.store');
+    ->name('modifyProfil.store');
 
 Route::get('/modifyProfil/{id}', [ModifyProfilController::class, 'show'])
-->name('modifyProfil.show');
+    ->name('modifyProfil.show');
 
 /*Les compétences*/
 
 Route::post('/abilities', [AbilitiesController::class, 'store'])
-->name('abilities.store');
+    ->name('abilities.store');
 
 Route::get('/abilities', [AbilitiesController::class, 'index'])
-->name('abilities.index ');
-
-
-
+    ->name('abilities.index ');
