@@ -12,13 +12,18 @@ class GroupUserController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * Cette fonction prend le group_id en argument, afin de renvoyer uniquement les participants du groupe spécifique consulté
      */
-    public function index()
+
+     // ******************** FONCTION QUI RESTE A ECRIRE / INCOMPLETE
+    public function index($group_id)
     {
 
-        $userGroupRegistration = GroupUser::all();
+        $group_users_id = GroupUser::where('group_id', $group_id)->get();
+        $group_users = User::where('id',)
 
-        return response()->json(["userGroupRegistration" => $userGroupRegistration]);
+        //return response()->json(["userGroupRegistration" => $userGroupRegistration]);
     }
 
     /**

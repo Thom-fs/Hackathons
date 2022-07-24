@@ -66,21 +66,23 @@ Route::post('/registrations', [EventController::class, 'store'])
 
 /* _________________________________GROUP USER */
 
-// ******************* La route ci-dessous semble être une erreur, à confirmer par qui l'a créée ;)
-Route::get('/userAdd', [GroupUserController::class, 'index'])
-    ->name('userAdd.store');
+/**
+ * Route pour l'affichage des participants qui font partie d'un groupe dont on connaît l'id : {group_id}
+ */
+Route::get('/group-users/{group_id}', [GroupUserController::class, 'index'])
+    ->name('group-users.index');
 
 Route::post('/userAdd', [GroupUserController::class, 'store'])
     ->name('userAdd.store');
 
-/*SLOTS*/
+/* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])
     ->name('slots.index');
 
 Route::post('/slots', [SlotController::class, 'store'])
     ->name('slots.store');
 
-// USER
+// _________________________________USER
 Route::get('/profil/{id}', [ProfilController::class, 'show'])
     ->name('profil.show');
 
