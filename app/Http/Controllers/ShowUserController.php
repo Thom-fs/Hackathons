@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Profil;
 use Illuminate\Http\Request;
 
-
-class ProfilController extends Controller
+class ShowUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,9 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return response()->json(["users" => $users]);
     }
 
     /**
@@ -48,8 +48,7 @@ class ProfilController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return response()->json(['message' => '', 'user' => $user], 200);
+        //
     }
 
     /**

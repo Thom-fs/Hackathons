@@ -69,7 +69,9 @@ class GroupController extends Controller
     public function show($group_id)
     {
         $group = Group::find($group_id);
-        return response()->json(['message' => 'Affichage du groupe', 'group' => $group], 200);
+        $users = Group::find($group_id)->users()->orderBy('firstname')->get();
+
+        return response()->json(['message' => 'Affichage du groupe', 'group' => $group, 'users'=>$users], 200);
     }
 
     /**

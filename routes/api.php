@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ModifyProfilController;
 use App\Http\Controllers\AbilitiesController;
+use App\Http\Controllers\ShowUserController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,21 +37,23 @@ Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
 Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, 'logout']);
 // Permission
 
+// middleware('auth:sanctum')-> authorization
 
 /* _________________________________EVENTS*/
 
-    Route::middleware('auth:sanctum')->get('/events', [EventController::class, 'index'])
+    Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
     
-    Route::middleware('auth:sanctum')->get('/events/{id}', [EventController::class, 'show'])
+    Route::get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
-    Route::middleware('auth:sanctum')->post('/events', [EventController::class, 'store'])
+    
+    Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
     
-    Route::middleware('auth:sanctum')->get('/registrations', [EventController::class, 'index'])
+    Route::get('/registrations', [EventController::class, 'index'])
     ->name('registration.index');
     
-    Route::middleware('auth:sanctum')->post('/registrations', [EventController::class, 'store'])
+    Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
    
 
@@ -72,6 +76,22 @@ Route::get('/groups/{group_id}', [GroupController::class, 'show'])
 
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
+
+/* _________________________________EVENTS*/
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
+
+Route::post('/events', [EventController::class, 'store'])
+    ->name('events.store');
+
+Route::get('/events/{id}', [EventController::class, 'show'])
+    ->name('events.show');
+
+Route::get('/registrations', [EventController::class, 'index'])
+    ->name('registration.index');
+
+Route::post('/registrations', [EventController::class, 'store'])
+    ->name('registration.store');
 
 /* _________________________________GROUP USER */
 
@@ -120,3 +140,8 @@ Route::post('/abilities', [AbilitiesController::class, 'store'])
 
 Route::get('/abilities', [AbilitiesController::class, 'index'])
     ->name('abilities.index ');
+
+/* ShowUser affichage des users */
+
+Route::get('/showusers', [ShowUserController::class, 'index'])
+    ->name('showusers.index');
