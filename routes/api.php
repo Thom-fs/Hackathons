@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ModifyProfilController;
 use App\Http\Controllers\AbilitiesController;
+use App\Http\Controllers\ShowUserController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -134,3 +136,8 @@ Route::post('/abilities', [AbilitiesController::class, 'store'])
 
 Route::get('/abilities', [AbilitiesController::class, 'index'])
     ->name('abilities.index ');
+
+/* ShowUser affichage des users */
+
+Route::get('/showusers', [ShowUserController::class, 'index'])
+    ->name('showusers.index');
