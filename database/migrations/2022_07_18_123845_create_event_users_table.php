@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id'); // @guigui
             $table->unsignedBigInteger('event_id'); // @guigui
+            $table->string('user_lastname');
+            $table->string('user_firstname');
+            $table->string('user_email');
             $table->timestamps();
         });
     }

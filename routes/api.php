@@ -24,9 +24,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/*Authentification*/
+
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+
+Route::post('/auth/login', [AuthController::class, 'loginUser']);
+
+Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
+
+// Déconnexion
+
+Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, 'logout']);
+// Permission
+
+
+    Route::middleware('auth:sanctum')->get('/events', [EventController::class, 'index'])
+    ->name('events.index');
+    
+    Route::middleware('auth:sanctum')->get('/events/{id}', [EventController::class, 'show'])
+    ->name('events.show');
+    Route::middleware('auth:sanctum')->post('/events', [EventController::class, 'store'])
+    ->name('events.store');
+    
+    Route::middleware('auth:sanctum')->get('/registrations', [EventController::class, 'index'])
+    ->name('registration.index');
+    
+    Route::middleware('auth:sanctum')->post('/registrations', [EventController::class, 'store'])
+    ->name('registration.store');
+   
 
 
 /* _________________________________SLOTS*/
@@ -58,8 +83,6 @@ Route::post('/events', [EventController::class, 'store'])
 Route::get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
 Route::get('/registrations', [EventController::class, 'index'])
     ->name('registration.index');
 
@@ -91,11 +114,12 @@ Route::get('/profil/{id}', [ProfilController::class, 'show'])
 
 /* _________________________________Authentification*/
 
-Route::post('/auth/register', [AuthController::class, 'createUser']);
+// Attribution du role admin
+// Route::middleware((['auth', 'role:admin']))->group(function () {
+    
+// });
 
-Route::post('/auth/login', [AuthController::class, 'loginUser']);
 
-Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
 
 /*modification profil*/
 

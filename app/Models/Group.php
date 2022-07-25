@@ -18,7 +18,7 @@ class Group extends Model
         return $this->belongsTo(Event::class);
     }
 
-    //--- ci-dessous : la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directementla table intermédiaire
+    //--- ci-dessous : la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directement la table intermédiaire
     public function users()
     {
         return $this->belongsToMany(User::class, 'group_users', 'group_id','user_id');

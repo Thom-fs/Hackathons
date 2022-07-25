@@ -78,7 +78,7 @@ class User extends Authenticatable
         return $this->hasMany(EventUser::class);
     }
 
-    //--- ci-dessous : la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directementla table intermédiaire
+    //--- ci-dessous : la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directement la table intermédiaire
     public function groups()
     {
         return $this->belongsToMany(Group::class, 'group_users', 'user_id', 'group_id');
@@ -90,7 +90,7 @@ class User extends Authenticatable
     }
 
     // Test relation Adrien entre User et Profil pour afficher les donées d'un profil
-    public function Profil()
+    public function profil()
     {
         return $this->belongsTo(Profil::class, 'user_id', 'id');
     }
