@@ -7,6 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\EventUserController;
 use App\Http\Controllers\GroupUserController;
+use App\Http\Controllers\ProfilController;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -57,6 +58,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+
     // Lien vers la table des compétences utilisateur "abilities"
     public function abilities(): HasOne
     {
@@ -75,9 +78,20 @@ class User extends Authenticatable
         return $this->hasMany(EventUser::class);
     }
 
-    // Lien vers la table de liens entre groupes et participants "group_user"
+    //--- ci-dessous : la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directementla table intermédiaire
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_users', 'user_id', 'group_id');
+    }
+    // INUTILE SI LE "belongsToMany" FONCITONNE ** Lien vers la table de liens entre groupes et participants "group_user"
     public function group_users(): HasMany
     {
         return $this->hasMany(GroupUser::class);
+    }
+
+    // Test relation Adrien entre User et Profil pour afficher les donées d'un profil
+    public function Profil()
+    {
+        return $this->belongsTo(Profil::class, 'user_id', 'id');
     }
 }

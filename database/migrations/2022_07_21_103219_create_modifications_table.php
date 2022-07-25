@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('event_users', function (Blueprint $table) {
+        Schema::create('modifications', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // @guigui
-            $table->unsignedBigInteger('event_id'); // @guigui
-            $table->string('user_lastname');
-            $table->string('user_firstname');
-            $table->string('user_email');
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_users');
+        Schema::dropIfExists('modifications');
     }
 };

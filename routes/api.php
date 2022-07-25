@@ -4,7 +4,10 @@ use App\Http\Controllers\SlotController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GroupUserController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\ModifyProfilController;
+use App\Http\Controllers\AbilitiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,30 +52,63 @@ Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, '
    
 
 
-/*SLOTS*/
+/* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
 
 Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');
 
-/*GROUPS*/
-Route::get('/groups', [GroupController::class, 'index'])
+/* _________________________________GROUPS*/
+
+/**
+ * La route "groups.index" donne la liste des groupes liés à l'événement consulté, on lui passe donc event_id en argument {id}
+ */
+Route::get('/events/{event_id}/groups', [GroupController::class, 'index'])
     ->name('groups.index');
+
+Route::get('/groups/{group_id}', [GroupController::class, 'show'])
+    ->name('groups.show');
 
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
+<<<<<<< HEAD
 /*EVENTS*/
+=======
+/* _________________________________EVENTS*/
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
+>>>>>>> ed9d616a5340e359adc15893df13fe6f1a4cd00c
 
 
-/* GROUP USER */
-Route::get('/userAdd', [GroupUserController::class, 'index'])
-    ->name('userAdd.store');
+/* _________________________________GROUP USER */
+
+/**
+ * Route pour l'affichage des participants qui font partie d'un groupe dont on connaît l'id : {group_id}
+ */
+Route::get('/group-users/{group_id}', [GroupUserController::class, 'index'])
+    ->name('group-users.index');
 
 Route::post('/userAdd', [GroupUserController::class, 'store'])
     ->name('userAdd.store');
 
+<<<<<<< HEAD
 
 
+=======
+/* _________________________________SLOTS*/
+Route::get('/slots', [SlotController::class, 'index'])
+    ->name('slots.index');
+
+Route::post('/slots', [SlotController::class, 'store'])
+    ->name('slots.store');
+
+// _________________________________USER
+Route::get('/profil/{id}', [ProfilController::class, 'show'])
+    ->name('profil.show');
+
+
+/* _________________________________Authentification*/
+>>>>>>> ed9d616a5340e359adc15893df13fe6f1a4cd00c
 
 // Attribution du role admin
 // Route::middleware((['auth', 'role:admin']))->group(function () {
@@ -81,5 +117,22 @@ Route::post('/userAdd', [GroupUserController::class, 'store'])
 
 
 
+<<<<<<< HEAD
 /*EVENTS*/
+=======
+/*modification profil*/
+>>>>>>> ed9d616a5340e359adc15893df13fe6f1a4cd00c
 
+Route::post('/modifyProfil', [ModifyProfilController::class, 'store'])
+    ->name('modifyProfil.store');
+
+Route::get('/modifyProfil/{id}', [ModifyProfilController::class, 'show'])
+    ->name('modifyProfil.show');
+
+/*Les compétences*/
+
+Route::post('/abilities', [AbilitiesController::class, 'store'])
+    ->name('abilities.store');
+
+Route::get('/abilities', [AbilitiesController::class, 'index'])
+    ->name('abilities.index ');

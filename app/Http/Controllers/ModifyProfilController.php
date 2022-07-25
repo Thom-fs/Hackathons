@@ -2,28 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GroupUser;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class GroupUserController extends Controller
+use App\Models\User;
+use Illuminate\Http\Request;
+
+use function Ramsey\Uuid\v1;
+
+class ModifyProfil extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * 
-     * Cette fonction prend le group_id en argument, afin de renvoyer uniquement les participants du groupe spécifique consulté
      */
-
-     // ******************** FONCTION QUI RESTE A ECRIRE / INCOMPLETE
-    public function index($group_id)
+    public function index()
     {
-
-        $group_users_id = GroupUser::where('group_id', $group_id)->get();
-        $group_users = User::where('id',)
-
-        //return response()->json(["userGroupRegistration" => $userGroupRegistration]);
+        //
     }
 
     /**
@@ -34,7 +28,6 @@ class GroupUserController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -46,20 +39,6 @@ class GroupUserController extends Controller
     public function store(Request $request)
     {
 
-        {
-            $request->validate([
-                'user_id' => 'required|string',
-                'group_id' => 'required|string',
-            ]);
-
-            $userAdd = GroupUser::create([
-
-                'user_id'=> Auth::user()->id,
-                'group_id' => $request->group_id,
-            ]);
-
-            return response()->json(['message' => 'Votre participation à été ajoutée', 'userAdd' => $userAdd], 201);
-        }
     }
 
     /**
@@ -70,7 +49,8 @@ class GroupUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = User::find($id);
+            return response()->json(['message' => '', 'post' => $post], 200);
     }
 
     /**
@@ -93,7 +73,20 @@ class GroupUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = User::find($id);
+        $post->firstname = $request->input('firstname');
+        $post->lastname = $request->input('lastname');
+        $post->email = $request->input('email');
+        $post->password = $request->input('password');
+        $post->linkedin = $request->input('linkedin');
+        $post->github = $request->input('github');
+        $post->website = $request->input('website');
+        $post->portfolio = $request->input('portfolio');
+        $post->bio = $request->input('portfolio');
+        $post->picture = $request->input('picture');
+        $post->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -104,11 +97,6 @@ class GroupUserController extends Controller
      */
     public function destroy($id)
     {
-        {
-            $add = GroupUser::find($id);
-            $add->delete();
-
-            return redirect()->back();
-        }
+        //
     }
 }

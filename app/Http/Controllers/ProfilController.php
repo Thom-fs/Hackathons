@@ -2,28 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GroupUser;
+use App\Models\User;
+use App\Models\Profil;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class GroupUserController extends Controller
+
+class ProfilController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * 
-     * Cette fonction prend le group_id en argument, afin de renvoyer uniquement les participants du groupe spécifique consulté
      */
-
-     // ******************** FONCTION QUI RESTE A ECRIRE / INCOMPLETE
-    public function index($group_id)
+    public function index()
     {
-
-        $group_users_id = GroupUser::where('group_id', $group_id)->get();
-        $group_users = User::where('id',)
-
-        //return response()->json(["userGroupRegistration" => $userGroupRegistration]);
+        //
     }
 
     /**
@@ -34,7 +27,6 @@ class GroupUserController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -45,21 +37,7 @@ class GroupUserController extends Controller
      */
     public function store(Request $request)
     {
-
-        {
-            $request->validate([
-                'user_id' => 'required|string',
-                'group_id' => 'required|string',
-            ]);
-
-            $userAdd = GroupUser::create([
-
-                'user_id'=> Auth::user()->id,
-                'group_id' => $request->group_id,
-            ]);
-
-            return response()->json(['message' => 'Votre participation à été ajoutée', 'userAdd' => $userAdd], 201);
-        }
+        //
     }
 
     /**
@@ -70,7 +48,9 @@ class GroupUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $profil = Profil::findOrFail($id);
+        $profil->user;
+        return response()->json(['message' => '', 'profil' => $profil], 200);
     }
 
     /**
@@ -104,11 +84,6 @@ class GroupUserController extends Controller
      */
     public function destroy($id)
     {
-        {
-            $add = GroupUser::find($id);
-            $add->delete();
-
-            return redirect()->back();
-        }
+        //
     }
 }
