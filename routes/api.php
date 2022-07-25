@@ -36,6 +36,8 @@ Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, '
 // Permission
 
 
+/* _________________________________EVENTS*/
+
     Route::middleware('auth:sanctum')->get('/events', [EventController::class, 'index'])
     ->name('events.index');
     
@@ -70,11 +72,6 @@ Route::get('/groups/{group_id}', [GroupController::class, 'show'])
 
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
-
-/* _________________________________EVENTS*/
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
-
 
 /* _________________________________GROUP USER */
 
