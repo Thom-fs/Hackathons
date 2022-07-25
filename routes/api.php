@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ModifyProfilController;
 use App\Http\Controllers\AbilitiesController;
+use App\Http\Controllers\EventUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +65,13 @@ Route::get('/registrations', [EventController::class, 'index'])
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
+/* ________________EVENT USERS_________*/
+Route::get('/event_users', [EventUserController::class, 'index'])
+    ->name('event_users.index');
+
+Route::get('/event_users/{id}', [EventUserController::class, 'show'])
+    ->name('event_users.show');
+
 /* _________________________________GROUP USER */
 
 /**
@@ -110,3 +118,6 @@ Route::post('/abilities', [AbilitiesController::class, 'store'])
 
 Route::get('/abilities', [AbilitiesController::class, 'index'])
     ->name('abilities.index ');
+
+/* __________________ADMIN________*/
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
