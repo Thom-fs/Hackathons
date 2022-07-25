@@ -7,7 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\EventUserController;
 use App\Http\Controllers\GroupUserController;
-use App\Http\Controllers\ProfilController;
+
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -82,11 +82,5 @@ class User extends Authenticatable
     public function group_users(): HasMany
     {
         return $this->hasMany(GroupUser::class);
-    }
-
-    // Test relation Adrien entre User et Profil pour afficher les donées d'un profil
-    public function Profil()
-    {
-        return $this->belongsTo(Profil::class, 'user_id', 'id');
     }
 }
