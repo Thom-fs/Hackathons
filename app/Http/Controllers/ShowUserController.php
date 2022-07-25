@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class GroupController extends Controller
+class ShowUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($event_id)
+    public function index()
     {
-        $groups = Group::where('event_id', $event_id)->get();
+        $users = User::all();
 
-        return response()->json(["message" => "Affichage des groupes de l'évenement", "groups" => $groups]);
+        return response()->json(["users" => $users]);
     }
 
     /**
@@ -38,26 +37,7 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'subject' => 'required|string',
-            'name' => 'required|string',
-            'room' => 'required|string',
-            'members' => 'required|integer',
-            'abilities' => 'required|string'
-
-
-        ]);
-
-        $group = Group::create([
-            'subject' => $request->subject,
-            'name' => $request->name,
-            'room' => $request->room,
-            'members' => $request->members,
-            'abilities' => $request->abilities,
-            'event_id' => $request->event_id
-        ]);
-
-        return response()->json(['message' => 'Groupe créé', 'group' => $group], 201);
+        //
     }
 
     /**
@@ -66,12 +46,9 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($group_id)
+    public function show($id)
     {
-        $group = Group::find($group_id);
-        $users = Group::find($group_id)->users()->orderBy('firstname')->get();
-
-        return response()->json(['message' => 'Affichage du groupe', 'group' => $group, 'users'=>$users], 200);
+        //
     }
 
     /**

@@ -16,12 +16,12 @@ class GroupUserController extends Controller
      * Cette fonction prend le group_id en argument, afin de renvoyer uniquement les participants du groupe spécifique consulté
      */
 
-     // ******************** FONCTION QUI RESTE A ECRIRE / INCOMPLETE
+    // ******************** FONCTION QUI RESTE A ECRIRE / INCOMPLETE
     public function index($group_id)
     {
 
-        $group_users_id = GroupUser::where('group_id', $group_id)->get();
-        $group_users = User::where('id',)
+        /* $group_users_id = GroupUser::where('group_id', $group_id)->get();
+        $group_users = User::where('id',); */
 
         //return response()->json(["userGroupRegistration" => $userGroupRegistration]);
     }
@@ -44,9 +44,7 @@ class GroupUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-
-        {
+    { {
             $request->validate([
                 'user_id' => 'required|string',
                 'group_id' => 'required|string',
@@ -54,7 +52,7 @@ class GroupUserController extends Controller
 
             $userAdd = GroupUser::create([
 
-                'user_id'=> Auth::user()->id,
+                'user_id' => Auth::user()->id,
                 'group_id' => $request->group_id,
             ]);
 
@@ -103,8 +101,7 @@ class GroupUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        {
+    { {
             $add = GroupUser::find($id);
             $add->delete();
 
