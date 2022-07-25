@@ -2,26 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use App\Models\User;
+use App\Models\Profil;
 use Illuminate\Http\Request;
 
 
-class EventController extends Controller
+class ProfilController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
-    /* Lister un event */
-
     public function index()
     {
-        $events = Event::all();
-
-        return response()->json(["events" => $events]);
+        //
     }
 
     /**
@@ -40,26 +35,9 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-    /* Création d'un event */
-
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'start' => 'required|string',
-            'end' => 'required|string',
-            'location' => 'required|string'
-        ]);
-
-        $event = Event::create([
-            'name' => $request->name,
-            'start' => $request->start,
-            'end' => $request->end,
-            'location' => $request->location,
-        ]);
-
-        return response()->json(['message' => 'Evènement créé', 'event' => $event], 201);
+        //
     }
 
     /**
@@ -70,8 +48,9 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event::find($id);
-        return response()->json(['message' => '', 'event' => $event], 200);
+        $profil = Profil::findOrFail($id);
+        $profil->user;
+        return response()->json(['message' => '', 'profil' => $profil], 200);
     }
 
     /**

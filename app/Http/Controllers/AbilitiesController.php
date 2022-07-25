@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AbilitiesController extends Controller
 {
@@ -11,9 +13,10 @@ class AbilitiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        $user= User::find($user_id);
+        return response()->json(["abilitties" => $user->abilities]);
     }
 
     /**
@@ -34,7 +37,18 @@ class AbilitiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            $request->validate([
+                'user_id' => 'required|string',
+            ]);
+
+            $userAbilities =User::create([
+
+                'user_id'=> Auth::user()->id,
+            ]);
+
+            return response()->json(['message' => 'Compétences ajoutées', 'userAbilities' => $userAbilities], 201);
+        }
     }
 
     /**

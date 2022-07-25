@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+
+use App\Models\User;
 use Illuminate\Http\Request;
 
+use function Ramsey\Uuid\v1;
 
-class EventController extends Controller
+class ModifyProfil extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
-    /* Lister un event */
-
     public function index()
     {
-        $events = Event::all();
-
-        return response()->json(["events" => $events]);
+        //
     }
 
     /**
@@ -40,26 +36,9 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-    /* Création d'un event */
-
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'start' => 'required|string',
-            'end' => 'required|string',
-            'location' => 'required|string'
-        ]);
 
-        $event = Event::create([
-            'name' => $request->name,
-            'start' => $request->start,
-            'end' => $request->end,
-            'location' => $request->location,
-        ]);
-
-        return response()->json(['message' => 'Evènement créé', 'event' => $event], 201);
     }
 
     /**
@@ -70,8 +49,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event::find($id);
-        return response()->json(['message' => '', 'event' => $event], 200);
+        $post = User::find($id);
+            return response()->json(['message' => '', 'post' => $post], 200);
     }
 
     /**
@@ -94,7 +73,20 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = User::find($id);
+        $post->firstname = $request->input('firstname');
+        $post->lastname = $request->input('lastname');
+        $post->email = $request->input('email');
+        $post->password = $request->input('password');
+        $post->linkedin = $request->input('linkedin');
+        $post->github = $request->input('github');
+        $post->website = $request->input('website');
+        $post->portfolio = $request->input('portfolio');
+        $post->bio = $request->input('portfolio');
+        $post->picture = $request->input('picture');
+        $post->save();
+
+        return redirect()->back();
     }
 
     /**
