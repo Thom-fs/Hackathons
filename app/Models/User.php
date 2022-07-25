@@ -88,13 +88,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(GroupUser::class);
     }
-<<<<<<< HEAD
-=======
-
-    // Test relation Adrien entre User et Profil pour afficher les donées d'un profil
-    public function profil()
-    {
-        return $this->belongsTo(Profil::class, 'user_id', 'id');
-    }
->>>>>>> f8a5b38d0d2d0a72dbc02fd3037c79f61aee44bb
 }
