@@ -71,13 +71,9 @@ Route::get('/groups/{group_id}', [GroupController::class, 'show'])
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
-<<<<<<< HEAD
-/*EVENTS*/
-=======
 /* _________________________________EVENTS*/
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
->>>>>>> ed9d616a5340e359adc15893df13fe6f1a4cd00c
 
 
 /* _________________________________GROUP USER */
@@ -91,10 +87,6 @@ Route::get('/group-users/{group_id}', [GroupUserController::class, 'index'])
 Route::post('/userAdd', [GroupUserController::class, 'store'])
     ->name('userAdd.store');
 
-<<<<<<< HEAD
-
-
-=======
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])
     ->name('slots.index');
@@ -108,7 +100,6 @@ Route::get('/profil/{id}', [ProfilController::class, 'show'])
 
 
 /* _________________________________Authentification*/
->>>>>>> ed9d616a5340e359adc15893df13fe6f1a4cd00c
 
 // Attribution du role admin
 // Route::middleware((['auth', 'role:admin']))->group(function () {
@@ -117,11 +108,7 @@ Route::get('/profil/{id}', [ProfilController::class, 'show'])
 
 
 
-<<<<<<< HEAD
-/*EVENTS*/
-=======
 /*modification profil*/
->>>>>>> ed9d616a5340e359adc15893df13fe6f1a4cd00c
 
 Route::post('/modifyProfil', [ModifyProfilController::class, 'store'])
     ->name('modifyProfil.store');
