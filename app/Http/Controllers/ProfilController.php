@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Profil;
 use Illuminate\Http\Request;
 
 
@@ -49,6 +48,7 @@ class ProfilController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        $user->user;
         return response()->json(['message' => '', 'user' => $user], 200);
     }
 
