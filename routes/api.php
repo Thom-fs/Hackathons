@@ -56,8 +56,6 @@ Route::post('/events', [EventController::class, 'store'])
 Route::get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
 Route::get('/registrations', [EventController::class, 'index'])
     ->name('registration.index');
 
