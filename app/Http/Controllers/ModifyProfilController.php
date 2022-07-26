@@ -38,8 +38,40 @@ class ModifyProfil extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'picture' => 'nullable|mimes:jpg,png,jpeg']);
 
+            $newPicture = '';
+
+        if (isset($request->picture)) {
+
+
+            $newPicture =  $request->picture->store('picture');
+            $request->picture->move(public_path('picture'), $newPicture);
+        }
+
+        $post = [
+            'picture' => $newPicture
+        ];
+
+        user::created($newPicture);
+
+        // $request->validate([
+        //     'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpeg,png,|max:2048'
+        //     ]);
+        //     $fileModel = new File;
+        //     if($request->file()) {
+        //         $fileName = time().'_'.$request->file->getClientOriginalName();
+        //         $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+        //         $fileModel->name = time().'_'.$request->file->getClientOriginalName();
+        //         $fileModel->file_path = '/storage/' . $filePath;
+        //         $fileModel->save();
+        //         return back()
+        //         ->with('success','File has been uploaded.')
+        //         ->with('file', $fileName);
+        //     }
     }
+
 
     /**
      * Display the specified resource.
@@ -71,7 +103,7 @@ class ModifyProfil extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) //route a faire
     {
         $post = User::find($id);
         $post->firstname = $request->input('firstname');
@@ -87,6 +119,7 @@ class ModifyProfil extends Controller
         $post->save();
 
         return redirect()->back();
+        // back to profil
     }
 
     /**

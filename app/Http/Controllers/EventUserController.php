@@ -39,8 +39,7 @@ class EventUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        {
+    { {
             $request->validate([
                 'user_id' => 'required|string',
                 'event_id' => 'required|string',
@@ -48,11 +47,11 @@ class EventUserController extends Controller
 
             $event = EventUser::create([
 
-                'user_id'=> Auth::user()->id,
+                'user_id' => Auth::user()->id,
                 'event_id' => $request->event_id,
             ]);
 
-            return response()->json(['message' => 'Votre inscription à bien été pris en compte', 'event' => $event], 201);
+            return response()->json(['message' => 'Votre inscription a bien été prise en compte', 'event' => $event], 201);
         }
     }
 
