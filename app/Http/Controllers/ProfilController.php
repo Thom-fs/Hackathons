@@ -49,11 +49,11 @@ class ProfilController extends Controller
      */
     public function show($id)
     {
-        $profil = Profil::findOrFail($id);
-        $profil->user;
-        $profil->user->abilities;
+        $user = User::findOrFail($id);
 
-        return response()->json(['message' => '', 'profil' => $profil], 200);
+        $user->abilities;
+
+        return response()->json(['message' => '', 'user' => $user], 200);
     }
 
     /**
