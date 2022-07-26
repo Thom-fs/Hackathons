@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Abilities;
 use App\Models\User;
 use App\Models\Profil;
 use Illuminate\Http\Request;
@@ -50,6 +51,8 @@ class ProfilController extends Controller
     {
         $profil = Profil::findOrFail($id);
         $profil->user;
+        $profil->user->abilities;
+
         return response()->json(['message' => '', 'profil' => $profil], 200);
     }
 

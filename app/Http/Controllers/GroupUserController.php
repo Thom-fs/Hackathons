@@ -44,20 +44,19 @@ class GroupUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { {
-            $request->validate([
-                'user_id' => 'required|string',
-                'group_id' => 'required|string',
-            ]);
+    {
+        $request->validate([
+            'user_id' => 'required|string',
+            'group_id' => 'required|string',
+        ]);
 
-            $userAdd = GroupUser::create([
+        $userAdd = GroupUser::create([
 
-                'user_id' => Auth::user()->id,
-                'group_id' => $request->group_id,
-            ]);
+            'user_id' => Auth::user()->id,
+            'group_id' => $request->group_id,
+        ]);
 
-            return response()->json(['message' => 'Votre participation à été ajoutée', 'userAdd' => $userAdd], 201);
-        }
+        return response()->json(['message' => 'Votre participation à été ajoutée', 'userAdd' => $userAdd], 201);
     }
 
     /**

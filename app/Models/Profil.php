@@ -11,7 +11,7 @@ class Profil extends Model
     protected $guarded = ['id'];
 
     // Test relation Adrien entre User et Profil pour afficher les donées d'un profil
-    public function User()
+    public function users()
     {
         return $this->hasMany(User::class, 'user_id', 'id');
     }
