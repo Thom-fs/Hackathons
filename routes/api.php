@@ -77,22 +77,6 @@ Route::get('/groups/{group_id}', [GroupController::class, 'show'])
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
-/* _________________________________EVENTS*/
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
-
-Route::post('/events', [EventController::class, 'store'])
-    ->name('events.store');
-
-Route::get('/events/{id}', [EventController::class, 'show'])
-    ->name('events.show');
-
-Route::get('/registrations', [EventController::class, 'index'])
-    ->name('registration.index');
-
-Route::post('/registrations', [EventController::class, 'store'])
-    ->name('registration.store');
-
 /* ________________EVENT USERS_________*/
 Route::get('/event_users', [EventUserController::class, 'index'])
     ->name('event_users.index');
