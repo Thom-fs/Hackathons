@@ -72,6 +72,12 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         return response()->json(['message' => '', 'event' => $event], 200);
+
+        // $event = Event::find($event_id);
+
+        // $users = Event::find($event_id)->users()->orderBy('firstname')->get();
+
+        // return response()->json(['message' => 'Affichage du groupe', 'event' => $event, 'users' => $users], 200);
     }
 
     /**
