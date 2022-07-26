@@ -45,18 +45,20 @@ class GroupUserController extends Controller
      */
     public function store(Request $request)
     {
+        // validate utile ici?? pas de form
         $request->validate([
-            'user_id' => 'required|string',
-            'group_id' => 'required|string',
+            'user_id' => 'required|integer',
+            'group_id' => 'required|integer',
         ]);
 
-        $userAdd = GroupUser::create([
+        $grpusers = GroupUser::create([
 
-            'user_id' => Auth::user()->id,
+            'user_id' => $request->user_id,
             'group_id' => $request->group_id,
         ]);
 
-        return response()->json(['message' => 'Votre participation à été ajoutée', 'userAdd' => $userAdd], 201);
+        // 'group-users' => $userAdd @guigui??????????????????????
+        return response()->json(['message' => 'Votre participation à été ajoutée', 'group-users' => $grpusers], 201);
     }
 
     /**

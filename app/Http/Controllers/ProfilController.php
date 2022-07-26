@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Abilities;
-use App\Models\User;
 use App\Models\Profil;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 

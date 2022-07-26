@@ -17,4 +17,15 @@ class Abilities extends Model
     {
         return $this->belongsTo(User::class);
     }
-}
+
+
+  /**
+     * Get all of the abilities for the user.
+     */
+    public function abilities()
+    {
+        return $this->hasManyThrough(Abilities::class, User::class);
+    }
+
+
+};
