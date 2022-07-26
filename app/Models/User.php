@@ -37,7 +37,9 @@ class User extends Authenticatable
         'portfolio',
         'bio',
         'password',
-    ];
+        'name',
+        'file_path'
+        ];
 
     /**
      * The attributes that should be hidden for serialization.

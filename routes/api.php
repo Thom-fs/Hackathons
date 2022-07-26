@@ -104,5 +104,11 @@ Route::post('/abilities', [AbilitiesController::class, 'store'])
 Route::get('/abilities', [AbilitiesController::class, 'index'])
 ->name('abilities.index ');
 
+/*
+Telecharger fichier/photo dans modif profil
+*/
+// Route::get('/upload-file', [FileUploadController::class, 'createForm'])
+// ->name('createForm');
 
-
+Route::post('/upload-picture', [ModifyProfilController::class, 'store'])
+->name('PictureUpload.store');
