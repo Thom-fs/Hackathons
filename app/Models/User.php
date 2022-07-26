@@ -39,7 +39,7 @@ class User extends Authenticatable
         'password',
         'name',
         'file_path'
-        ];
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -80,14 +80,20 @@ class User extends Authenticatable
         return $this->hasMany(EventUser::class);
     }
 
-    //--- ci-dessous : la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directement la table intermédiaire
+    //--- ci-dessous : vers GROUP la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directement la table intermédiaire
     public function groups()
     {
         return $this->belongsToMany(Group::class, 'group_users', 'user_id', 'group_id');
     }
     // INUTILE SI LE "belongsToMany" FONCITONNE ** Lien vers la table de liens entre groupes et participants "group_user"
-    public function group_users(): HasMany
+    /*     public function group_users(): HasMany
     {
         return $this->hasMany(GroupUser::class);
+    } */
+
+    //--- ci-dessous : vers EVENTS la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directement la table intermédiaire
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'event_users', 'user_id', 'event_id');
     }
 }
