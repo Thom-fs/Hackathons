@@ -50,9 +50,7 @@ class ProfilController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-
         $user->abilities;
-
         return response()->json(['message' => '', 'user' => $user], 200);
     }
 
