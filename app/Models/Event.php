@@ -15,4 +15,9 @@ class Event extends Model
     {
         return $this->hasMany(Group::class);
     }
+
+    public function event_users(): HasMany
+    {
+        return $this->hasMany(EventUser::class);
+    }
 }

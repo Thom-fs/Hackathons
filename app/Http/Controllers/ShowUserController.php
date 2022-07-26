@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\EventUser;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-
-class EventUserController extends Controller
+class ShowUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()  // Route à exclure? (car non utilisée)
+    public function index()
     {
-        $eventsRegistration = EventUser::all();
+        $users = User::all();
 
-        return response()->json(["eventsRegistration" => $eventsRegistration]);
+        return response()->json(["users" => $users]);
     }
 
     /**
@@ -39,20 +36,8 @@ class EventUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { {
-            $request->validate([
-                'user_id' => 'required|string',
-                'event_id' => 'required|string',
-            ]);
-
-            $event = EventUser::create([
-
-                'user_id' => Auth::user()->id,
-                'event_id' => $request->event_id,
-            ]);
-
-            return response()->json(['message' => 'Votre inscription a bien été prise en compte', 'event' => $event], 201);
-        }
+    {
+        //
     }
 
     /**

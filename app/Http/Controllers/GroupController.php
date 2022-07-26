@@ -15,9 +15,9 @@ class GroupController extends Controller
      */
     public function index($event_id)
     {
-        $event = Event::find($event_id);
+        $groups = Group::where('event_id', $event_id)->get();
 
-        return response()->json(["groups" => $event->groups]);
+        return response()->json(["message" => "Affichage des groupes de l'évenement", "groups" => $groups]);
     }
 
     /**
@@ -73,6 +73,9 @@ class GroupController extends Controller
         return response()->json(['message' => '', 'group' => $group], 200);
 
 
+        $users = Group::find($group_id)->users()->orderBy('firstname')->get();
+
+        return response()->json(['message' => 'Affichage du groupe', 'group' => $group, 'users'=>$users], 200);
     }
 
     /**

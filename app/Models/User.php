@@ -7,7 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\EventUserController;
 use App\Http\Controllers\GroupUserController;
-use App\Http\Controllers\ProfilController;
+
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -80,7 +80,12 @@ class User extends Authenticatable
         return $this->hasMany(EventUser::class);
     }
 
-    // Lien vers la table de liens entre groupes et participants "group_user"
+    //--- ci-dessous : la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directement la table intermédiaire
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_users', 'user_id', 'group_id');
+    }
+    // INUTILE SI LE "belongsToMany" FONCITONNE ** Lien vers la table de liens entre groupes et participants "group_user"
     public function group_users(): HasMany
     {
         return $this->hasMany(GroupUser::class);

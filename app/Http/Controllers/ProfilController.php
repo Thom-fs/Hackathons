@@ -48,6 +48,7 @@ class ProfilController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        $user->user;
         return response()->json(['message' => '', 'user' => $user], 200);
     }
 
