@@ -71,7 +71,6 @@ class GroupController extends Controller
         $group = Group::find($group_id);
         $group->abilities;
 
-
         $users = Group::find($group_id)->users()->orderBy('firstname')->get();
 
 

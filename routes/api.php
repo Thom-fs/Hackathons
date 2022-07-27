@@ -61,9 +61,9 @@ Route::get('/events', [EventController::class, 'index'])
 
 // Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
 //     ->name('events.show');
-Route::get('/events/{event_id}', [EventController::class, 'show'])
-    ->name('events.show'); // test pour affichage front
 
+Route::get('/events/{id}', [EventController::class, 'show'])
+    ->name('events.show');
 
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
@@ -96,6 +96,7 @@ Route::get('/groups/{group_id}', [GroupController::class, 'show'])
 
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
+
 
 /* ________________EVENT USERS_________*/
 Route::get('/event-users', [EventUserController::class, 'index'])
