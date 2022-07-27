@@ -101,7 +101,7 @@ Route::get('/event_users/{id}', [EventUserController::class, 'show'])
 Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
-Route::get('/event_users', [EventUserController::class, 'store'])
+Route::post('/event_users', [EventUserController::class, 'store'])
     ->name('event_users.store');
 
 
