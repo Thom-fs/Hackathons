@@ -29,4 +29,10 @@ class Group extends Model
     {
         return $this->hasMany(GroupUser::class);
     }
+
+    //--- Liens avec la table slots, via running_orders
+    public function slots(): BelongsToMany
+    {
+        return $this->belongsToMany(Slot::class, 'running_orders', 'group_id', 'slot_it');
+    }
 }

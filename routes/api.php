@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ModifyProfilController;
 use App\Http\Controllers\AbilitiesController;
 use App\Http\Controllers\EventUserController;
+use App\Http\Controllers\RunningOrderController;
 use App\Http\Controllers\ShowUserController;
 
 use Illuminate\Http\Request;
@@ -114,6 +115,14 @@ Route::get('/group-users/{group_id}', [GroupUserController::class, 'index'])
 
 Route::post('/group-users', [GroupUserController::class, 'store'])
     ->name('group-users.store');
+
+
+
+/*_________________________________RUNNING ORDERS */
+
+Route::post('/running-orders', [RunningOrderController::class, 'store'])
+    ->name('running-orders.store');
+
 
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])
