@@ -58,12 +58,14 @@ Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, '
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
 
-
 Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
+
+Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
+    ->name('events.destroy.id');
 
 Route::get('/registrations', [EventController::class, 'index'])
     ->name('registration.index');
@@ -102,10 +104,6 @@ Route::get('/event-users/{id}', [EventUserController::class, 'show'])
 Route::post('/event_users', [EventUserController::class, 'store'])
     ->name('event_users.store');
 
-
-
-Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
-    ->name('events.destroy.id');
 
 /* _________________________________GROUP USER */
 
