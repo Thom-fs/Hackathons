@@ -6,7 +6,7 @@ use App\Models\Abilities;
 use App\Models\Profil;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class ProfilController extends Controller
 {
@@ -52,6 +52,12 @@ class ProfilController extends Controller
         $user = User::findOrFail($id);
         $user->abilities;
         return response()->json(['message' => '', 'user' => $user], 200);
+    }
+
+    public function showOwn()
+    {
+        $user = Auth::user();
+        return response()->json(['message' => 'User récupéré', 'user' => $user], 200);
     }
 
     /**

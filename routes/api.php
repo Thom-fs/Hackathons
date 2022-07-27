@@ -41,10 +41,25 @@ Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, '
 // middleware('auth:sanctum')-> authorization
 /* _________________________________EVENTS*/
 
+// Route::middleware('auth:sanctum')->get('/events', [EventController::class, 'index'])
+//     ->name('events.index');
+
+// Route::middleware('auth:sanctum')->get('/events/{id}', [EventController::class, 'show'])
+//     ->name('events.show');
+// Route::middleware('auth:sanctum')->post('/events', [EventController::class, 'store'])
+//     ->name('events.store');
+
+// Route::middleware('auth:sanctum')->get('/registrations', [EventController::class, 'index'])
+//     ->name('registration.index');
+
+// Route::middleware('auth:sanctum')->post('/registrations', [EventController::class, 'store'])
+//     ->name('registration.store');
+
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
 
-Route::get('/events/{event_id}', [EventController::class, 'show'])
+
+Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
 Route::post('/events', [EventController::class, 'store'])
@@ -83,9 +98,14 @@ Route::get('/event-users', [EventUserController::class, 'index'])
 Route::get('/event-users/{id}', [EventUserController::class, 'show'])
     ->name('event_users.show');
 
-Route::post('/event-users', [EventUserController::class, 'store'])
+
+Route::post('/event_users', [EventUserController::class, 'store'])
     ->name('event_users.store');
 
+
+
+Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
+    ->name('events.destroy.id');
 
 /* _________________________________GROUP USER */
 
@@ -108,6 +128,9 @@ Route::post('/slots', [SlotController::class, 'store'])
 // _________________________________USER
 Route::get('/profil/{id}', [ProfilController::class, 'show'])
     ->name('profil.show');
+
+Route::middleware("auth:sanctum")->get('/my-profile', [ProfilController::class, 'showOwn'])
+    ->name('my-profile.showOwn');
 
 
 /* _________________________________Authentification*/
