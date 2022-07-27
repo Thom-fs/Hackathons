@@ -78,14 +78,14 @@ Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
 /* ________________EVENT USERS_________*/
-Route::get('/event_users', [EventUserController::class, 'index'])
-    ->name('event_users.index');
+Route::get('/event-users', [EventUserController::class, 'index'])
+    ->name('event-users.index');
 
-Route::get('/event_users/{id}', [EventUserController::class, 'show'])
-    ->name('event_users.show');
+Route::get('/event-users/{id}', [EventUserController::class, 'show'])
+    ->name('event-users.show');
 
-Route::post('/event_users', [EventUserController::class, 'store'])
-    ->name('event_users.store');
+Route::middleware("auth:sanctum")->post('/event-users', [EventUserController::class, 'store'])
+    ->name('event-users.store');
 
 
 
