@@ -70,8 +70,6 @@ class GroupController extends Controller
     {
         $group = Group::find($group_id);
         $group->abilities;
-        return response()->json(['message' => '', 'group' => $group], 200);
-
 
         $users = Group::find($group_id)->users()->orderBy('firstname')->get();
 
