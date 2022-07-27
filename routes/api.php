@@ -84,7 +84,7 @@ Route::get('/event_users', [EventUserController::class, 'index'])
 Route::get('/event_users/{id}', [EventUserController::class, 'show'])
     ->name('event_users.show');
 
-Route::get('/event_users', [EventUserController::class, 'store'])
+Route::post('/event_users', [EventUserController::class, 'store'])
     ->name('event_users.store');
 
 
