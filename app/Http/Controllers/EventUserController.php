@@ -41,11 +41,10 @@ class EventUserController extends Controller
     public function store(Request $request)
     { {
             $request->validate([
-                'event_id' => 'required|string',
+                'event_id' => 'required|unsignedBigInteger',
             ]);
 
             $event_user = EventUser::create([
-
                 'user_id' => Auth::user()->id,
                 'event_id' => $request->event_id,
             ]);
