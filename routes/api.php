@@ -59,8 +59,11 @@ Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
 
 
-Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
-    ->name('events.show');
+// Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
+//     ->name('events.show');
+Route::get('/events/{event_id}', [EventController::class, 'show'])
+    ->name('events.show'); // test pour affichage front
+
 
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
@@ -71,9 +74,9 @@ Route::get('/registrations', [EventController::class, 'index'])
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
+
 Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
     ->name('events.destroy.id');
-
 
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
@@ -103,7 +106,6 @@ Route::get('/event-users/{id}', [EventUserController::class, 'show'])
 
 Route::middleware("auth:sanctum")->post('/event-users', [EventUserController::class, 'store'])
     ->name('event-users.store');
-
 
 /* _________________________________GROUP USER */
 
