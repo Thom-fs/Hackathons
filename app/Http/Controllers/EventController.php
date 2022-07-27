@@ -68,10 +68,14 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($event_id)
     {
-        $event = Event::find($id);
-        return response()->json(['message' => '', 'event' => $event], 200);
+        /*         $event = Event::find($event_id);
+        return response()->json(['message' => '', 'event' => $event], 200); */
+
+        $event = Event::find($event_id);
+        $users = Event::find($event_id)->users()->orderBy('firstname')->get();
+        return response()->json(['message' => 'Affichage du groupe', 'event' => $event, 'users' => $users], 200);
     }
 
     /**

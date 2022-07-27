@@ -20,4 +20,10 @@ class Event extends Model
     {
         return $this->hasMany(EventUser::class);
     }
+
+    //--- ci-dessous : vers USERS la manière "belongsToMany", qui devrait simplifier la tâche et utiliser directement la table intermédiaire
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'event_users', 'event_id', 'user_id');
+    }
 }

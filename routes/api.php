@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ModifyProfilController;
 use App\Http\Controllers\AbilitiesController;
+use App\Http\Controllers\EventUserController;
 use App\Http\Controllers\ShowUserController;
 
 use Illuminate\Http\Request;
@@ -37,6 +38,8 @@ Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
 Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, 'logout']);
 // Permission
 
+// middleware('auth:sanctum')-> authorization
+/* _________________________________EVENTS*/
 
 // Route::middleware('auth:sanctum')->get('/events', [EventController::class, 'index'])
 //     ->name('events.index');
@@ -51,6 +54,21 @@ Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, '
 
 // Route::middleware('auth:sanctum')->post('/registrations', [EventController::class, 'store'])
 //     ->name('registration.store');
+
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
+
+Route::get('/events/{event_id}', [EventController::class, 'show'])
+    ->name('events.show');
+
+Route::post('/events', [EventController::class, 'store'])
+    ->name('events.store');
+
+Route::get('/registrations', [EventController::class, 'index'])
+    ->name('registration.index');
+
+Route::post('/registrations', [EventController::class, 'store'])
+    ->name('registration.store');
 
 
 
@@ -73,21 +91,20 @@ Route::get('/groups/{group_id}', [GroupController::class, 'show'])
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
-/* _________________________________EVENTS*/
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
+/* ________________EVENT USERS_________*/
+Route::get('/event_users', [EventUserController::class, 'index'])
+    ->name('event_users.index');
 
-Route::post('/events', [EventController::class, 'store'])
-    ->name('events.store');
+Route::get('/event_users/{id}', [EventUserController::class, 'show'])
+    ->name('event_users.show');
 
 Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
-Route::get('/registrations', [EventController::class, 'index'])
-    ->name('registration.index');
+Route::get('/event_users', [EventUserController::class, 'store'])
+    ->name('event_users.store');
 
-Route::post('/registrations', [EventController::class, 'store'])
-    ->name('registration.store');
+
 
 Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
     ->name('events.destroy.id');
@@ -100,8 +117,8 @@ Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
 Route::get('/group-users/{group_id}', [GroupUserController::class, 'index'])
     ->name('group-users.index');
 
-Route::post('/userAdd', [GroupUserController::class, 'store'])
-    ->name('userAdd.store');
+Route::post('/group-users', [GroupUserController::class, 'store'])
+    ->name('group-users.store');
 
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])
@@ -143,6 +160,17 @@ Route::post('/abilities', [AbilitiesController::class, 'store'])
 Route::get('/abilities', [AbilitiesController::class, 'index'])
     ->name('abilities.index ');
 
+/*
+Telecharger fichier/photo dans modif profil
+*/
+// Route::get('/upload-file', [FileUploadController::class, 'createForm'])
+// ->name('createForm');
+
+Route::post('/upload-picture', [ModifyProfilController::class, 'store'])
+    ->name('PictureUpload.store');
+
+/* __________________ADMIN________*/
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 /* ShowUser affichage des users */
 
 Route::get('/showusers', [ShowUserController::class, 'index'])
