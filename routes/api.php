@@ -38,20 +38,20 @@ Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, '
 // Permission
 
 
-    Route::middleware('auth:sanctum')->get('/events', [EventController::class, 'index'])
-    ->name('events.index');
-    
-    Route::middleware('auth:sanctum')->get('/events/{id}', [EventController::class, 'show'])
-    ->name('events.show');
-    Route::middleware('auth:sanctum')->post('/events', [EventController::class, 'store'])
-    ->name('events.store');
-    
-    Route::middleware('auth:sanctum')->get('/registrations', [EventController::class, 'index'])
-    ->name('registration.index');
-    
-    Route::middleware('auth:sanctum')->post('/registrations', [EventController::class, 'store'])
-    ->name('registration.store');
-   
+// Route::middleware('auth:sanctum')->get('/events', [EventController::class, 'index'])
+//     ->name('events.index');
+
+// Route::middleware('auth:sanctum')->get('/events/{id}', [EventController::class, 'show'])
+//     ->name('events.show');
+// Route::middleware('auth:sanctum')->post('/events', [EventController::class, 'store'])
+//     ->name('events.store');
+
+// Route::middleware('auth:sanctum')->get('/registrations', [EventController::class, 'index'])
+//     ->name('registration.index');
+
+// Route::middleware('auth:sanctum')->post('/registrations', [EventController::class, 'store'])
+//     ->name('registration.store');
+
 
 
 /* _________________________________SLOTS*/
@@ -80,7 +80,7 @@ Route::get('/events', [EventController::class, 'index'])
 Route::post('/events', [EventController::class, 'store'])
     ->name('events.store');
 
-Route::get('/events/{id}', [EventController::class, 'show'])
+Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
 Route::get('/registrations', [EventController::class, 'index'])
@@ -88,6 +88,9 @@ Route::get('/registrations', [EventController::class, 'index'])
 
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
+
+Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
+    ->name('events.destroy.id');
 
 /* _________________________________GROUP USER */
 
@@ -111,12 +114,15 @@ Route::post('/slots', [SlotController::class, 'store'])
 Route::get('/profil/{id}', [ProfilController::class, 'show'])
     ->name('profil.show');
 
+Route::middleware("auth:sanctum")->get('/my-profile', [ProfilController::class, 'showOwn'])
+    ->name('my-profile.showOwn');
+
 
 /* _________________________________Authentification*/
 
 // Attribution du role admin
 // Route::middleware((['auth', 'role:admin']))->group(function () {
-    
+
 // });
 
 
