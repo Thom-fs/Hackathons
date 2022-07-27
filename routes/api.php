@@ -73,6 +73,9 @@ Route::get('/registrations', [EventController::class, 'index'])
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
+Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
+    ->name('events.destroy.id');
+
 
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
@@ -95,15 +98,13 @@ Route::post('/groups', [GroupController::class, 'store'])
 
 /* ________________EVENT USERS_________*/
 Route::get('/event-users', [EventUserController::class, 'index'])
-    ->name('event_users.index');
+    ->name('event-users.index');
 
 Route::get('/event-users/{id}', [EventUserController::class, 'show'])
-    ->name('event_users.show');
+    ->name('event-users.show');
 
-
-Route::post('/event_users', [EventUserController::class, 'store'])
-    ->name('event_users.store');
-
+Route::middleware("auth:sanctum")->post('/event-users', [EventUserController::class, 'store'])
+    ->name('event-users.store');
 
 /* _________________________________GROUP USER */
 

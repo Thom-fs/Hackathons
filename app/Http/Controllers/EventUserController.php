@@ -41,15 +41,16 @@ class EventUserController extends Controller
     public function store(Request $request)
     { {
             $request->validate([
-                'event_id' => 'required|unsignedBigInteger',
+                'event_id' => 'required|integer',
             ]);
 
             $event_user = EventUser::create([
-                'user_id' => Auth::user()->id,
+
+                'user_id' => Auth::id(),
                 'event_id' => $request->event_id,
             ]);
 
-            return response()->json(['message' => 'Votre inscription a bien été prise en compte'], 201);
+            return response()->json(['message' => 'Votre inscription a bien été prise en compte', 'event_user' => $event_user], 201);
         }
     }
 
