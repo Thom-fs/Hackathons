@@ -59,6 +59,10 @@ Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, '
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
 
+
+// Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
+//     ->name('events.show');
+
 Route::get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
@@ -71,9 +75,9 @@ Route::get('/registrations', [EventController::class, 'index'])
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
+
 Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
     ->name('events.destroy.id');
-
 
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
