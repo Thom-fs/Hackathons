@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ModifyProfilController;
 use App\Http\Controllers\AbilitiesController;
 use App\Http\Controllers\EventUserController;
+use App\Http\Controllers\RunningOrderController;
 use App\Http\Controllers\ShowUserController;
 
 use Illuminate\Http\Request;
@@ -74,6 +75,15 @@ Route::get('/registrations', [EventController::class, 'index'])
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
+Route::put('/events/{id}', [EventController::class, 'update'])
+    ->name('events.update');
+
+//Route pour suppr les evenements crees
+Route::delete('/events/{id}', [EventController::class, 'destroy'])
+    ->name('events.destroy');
+
+
+
 
 Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
     ->name('events.destroy.id');
@@ -120,6 +130,14 @@ Route::get('/group-users/{group_id}', [GroupUserController::class, 'index'])
 Route::post('/group-users', [GroupUserController::class, 'store'])
     ->name('group-users.store');
 
+
+
+/*_________________________________RUNNING ORDERS */
+
+Route::post('/running-orders', [RunningOrderController::class, 'store'])
+    ->name('running-orders.store');
+
+
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])
     ->name('slots.index');
@@ -131,8 +149,14 @@ Route::post('/slots', [SlotController::class, 'store'])
 Route::get('/profil/{id}', [ProfilController::class, 'show'])
     ->name('profil.show');
 
+// Lire la table user pour afficher les infos dans profil
 Route::middleware("auth:sanctum")->get('/my-profile', [ProfilController::class, 'showOwn'])
     ->name('my-profile.showOwn');
+
+// Lire la table user pour afficher les infos dans profil
+Route::middleware("auth:sanctum")->put('/update-profile', [ProfilController::class, 'update'])
+    ->name('update-profile.update');
+
 
 
 /* _________________________________Authentification*/

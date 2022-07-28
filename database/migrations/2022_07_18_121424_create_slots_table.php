@@ -19,6 +19,7 @@ return new class extends Migration
             $table->time('start');
             $table->string('duration'); // ???????????????????????? a verifier en h / min
             $table->integer('teams');
+            $table->unsignedBigInteger('event_id');  // Nécéssaire à ajouter à la BDD
             $table->timestamps();
         });
     }
