@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -98,7 +98,26 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate(
+            [
+                'name' => 'required|string',
+                'start' => 'required|string',
+                'end' => 'required|string',
+                'location' => 'required|string',
+
+            ]
+        );
+
+        $event = Event::findOrFail($id);
+
+        $event->name = $request->input('name');
+        $event->start = $request->input('start');
+        $event->end = $request->input('end');
+        $event->location = $request->input('location');
+
+        $event->save();
+
+        return response()->json(['message' => 'Evénement Modifié', 'event' => $event], 200);
     }
 
     /**
@@ -109,9 +128,9 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $events = Event::find($id);
-        $events->delete();
+        $event = Event::findOrFail($id);
+        $event->delete();
 
-        return response()->json(['message' => "Suppresion de l'événement"], 200);
+        return response()->json(['message' => 'Evénement Supprimé'], 200);
     }
 }

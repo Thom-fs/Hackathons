@@ -75,6 +75,15 @@ Route::get('/registrations', [EventController::class, 'index'])
 Route::post('/registrations', [EventController::class, 'store'])
     ->name('registration.store');
 
+Route::put('/events/{id}', [EventController::class, 'update'])
+    ->name('events.update');
+
+//Route pour suppr les evenements crees
+Route::delete('/events/{id}', [EventController::class, 'destroy'])
+    ->name('events.destroy');
+
+
+
 
 Route::delete('/events/{id}', [EventController::class, 'destroy'])
     ->name('events.destroy');
@@ -106,8 +115,9 @@ Route::get('/event-users', [EventUserController::class, 'index'])
 Route::get('/event-users/{id}', [EventUserController::class, 'show'])
     ->name('event-users.show');
 
-Route::middleware("auth:sanctum")->post('/event-users', [EventUserController::class, 'store'])
+Route::post('/event-users', [EventUserController::class, 'store'])
     ->name('event-users.store');
+// middleware("auth:sanctum")-> // 
 
 /* _________________________________GROUP USER */
 
@@ -139,8 +149,14 @@ Route::post('/slots', [SlotController::class, 'store'])
 Route::get('/profil/{id}', [ProfilController::class, 'show'])
     ->name('profil.show');
 
+// Lire la table user pour afficher les infos dans profil
 Route::middleware("auth:sanctum")->get('/my-profile', [ProfilController::class, 'showOwn'])
     ->name('my-profile.showOwn');
+
+// Lire la table user pour afficher les infos dans profil
+Route::middleware("auth:sanctum")->put('/update-profile', [ProfilController::class, 'update'])
+    ->name('update-profile.update');
+
 
 
 /* _________________________________Authentification*/
