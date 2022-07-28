@@ -166,7 +166,8 @@ Route::middleware("auth:sanctum")->put('/update-profile', [ProfilController::cla
 
 // });
 
-
+Route::middleware("auth:sanctum")->post('/roles', [ProfilController::class, 'store'])
+    ->name('roles.store');
 
 /*modification profil*/
 
