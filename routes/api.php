@@ -85,8 +85,8 @@ Route::delete('/events/{id}', [EventController::class, 'destroy'])
 
 
 
-Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
-    ->name('events.destroy.id');
+Route::delete('/events/{id}', [EventController::class, 'destroy'])
+    ->name('events.destroy');
 
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');

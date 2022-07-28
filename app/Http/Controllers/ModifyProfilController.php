@@ -39,9 +39,10 @@ class ModifyProfil extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'picture' => 'nullable|mimes:jpg,png,jpeg']);
+            'picture' => 'nullable|mimes:jpg,png,jpeg'
+        ]);
 
-            $newPicture = '';
+        $newPicture = '';
 
         if (isset($request->picture)) {
 
@@ -81,8 +82,8 @@ class ModifyProfil extends Controller
      */
     public function show($id)
     {
-        $post = User::find($id);
-            return response()->json(['message' => '', 'post' => $post], 200);
+        $user = User::find($id);
+        return response()->json(['message' => '', 'post' => $post], 200);
     }
 
     /**

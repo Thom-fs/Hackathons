@@ -87,11 +87,11 @@ class ProfilController extends Controller
                 'lastname' => 'required|string',
                 'email' => 'required|string',
                 'password' => 'string|nullable',
-                'linkedIn' => 'required|string',
-                'github' => 'required|string',
-                'website' => 'required|string',
-                'portfolio' => 'required|string',
-                'bio' => 'required|string',
+                'linkedIn' => 'string|nullable',
+                'github' => 'string|nullable',
+                'website' => 'string|nullable',
+                'portfolio' => 'string|nullable',
+                'bio' => 'string|nullable',
                 // 'picture' => 'required|string',
 
             ]
