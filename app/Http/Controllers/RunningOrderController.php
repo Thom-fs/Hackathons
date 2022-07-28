@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RunningOrder;
 use Illuminate\Http\Request;
 
 class RunningOrderController extends Controller
@@ -34,7 +35,19 @@ class RunningOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate utile ici?? pas de form
+        $request->validate([
+            'slot_id' => 'required|integer',
+            'group_id' => 'required|integer',
+        ]);
+
+        $running_order = RunningOrder::create([
+
+            'slot_id' => $request->slot_id,
+            'group_id' => $request->group_id,
+        ]);
+
+        return response()->json(['message' => 'Groupe ajouté au créneau', 'running_order' => $running_order], 201);
     }
 
     /**

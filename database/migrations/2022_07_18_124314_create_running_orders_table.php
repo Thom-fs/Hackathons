@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('running_orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // @guigui
-            $table->unsignedBigInteger('group_id'); // @guigui
-            $table->unsignedBigInteger('slot_id'); // @guigui
+            $table->unsignedBigInteger('user_id'); // POTENTIELLEMENT INUTILE
+            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('slot_id');
             $table->timestamps();
         });
     }

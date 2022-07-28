@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ModifyProfilController;
 use App\Http\Controllers\AbilitiesController;
 use App\Http\Controllers\EventUserController;
+use App\Http\Controllers\RunningOrderController;
 use App\Http\Controllers\ShowUserController;
 
 use Illuminate\Http\Request;
@@ -58,7 +59,11 @@ Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, '
 Route::get('/events', [EventController::class, 'index'])
     ->name('events.index');
 
-Route::get('/events/{event_id}', [EventController::class, 'show'])
+
+// Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
+//     ->name('events.show');
+
+Route::get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
 Route::post('/events', [EventController::class, 'store'])
@@ -80,6 +85,8 @@ Route::delete('/events/{id}', [EventController::class, 'destroy'])
 
 
 
+Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
+    ->name('events.destroy.id');
 
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
@@ -100,20 +107,20 @@ Route::get('/groups/{group_id}', [GroupController::class, 'show'])
 Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
-/* ________________EVENT USERS_________*/
-Route::get('/event_users', [EventUserController::class, 'index'])
-    ->name('event_users.index');
 
-Route::get('/event_users/{id}', [EventUserController::class, 'show'])
-    ->name('event_users.show');
+/* ________________EVENT USERS_________*/
+Route::get('/event-users', [EventUserController::class, 'index'])
+    ->name('event-users.index');
+
+Route::get('/event-users/{id}', [EventUserController::class, 'show'])
+    ->name('event-users.show');
 
 Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
     ->name('events.show');
 
-Route::post('/event_users', [EventUserController::class, 'store'])
-    ->name('event_users.store');
 
-
+Route::middleware("auth:sanctum")->post('/event-users', [EventUserController::class, 'store'])
+    ->name('event-users.store');
 
 /* _________________________________GROUP USER */
 
@@ -125,6 +132,14 @@ Route::get('/group-users/{group_id}', [GroupUserController::class, 'index'])
 
 Route::post('/group-users', [GroupUserController::class, 'store'])
     ->name('group-users.store');
+
+
+
+/*_________________________________RUNNING ORDERS */
+
+Route::post('/running-orders', [RunningOrderController::class, 'store'])
+    ->name('running-orders.store');
+
 
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])
