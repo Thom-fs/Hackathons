@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Abilities;
-use App\Models\Profil;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfilController extends Controller
 {
@@ -78,9 +78,44 @@ class ProfilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $request->validate(
+            [
+                'firstname' => 'required|string',
+                'lastname' => 'required|string',
+                'email' => 'required|string',
+                'password' => 'string|nullable',
+                'linkedIn' => 'required|string',
+                'github' => 'required|string',
+                'website' => 'required|string',
+                'portfolio' => 'required|string',
+                'bio' => 'required|string',
+                // 'picture' => 'required|string',
+
+            ]
+        );
+
+        $user = Auth::user();
+
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->email = $request->input('email');
+        $user->linkedIn = $request->input('linkedIn');
+        $user->github = $request->input('github');
+        $user->website = $request->input('website');
+        $user->portfolio = $request->input('portfolio');
+        $user->bio = $request->input('bio');
+        // $user->picture = $request->input('picture');
+
+        if (isset($request->password)) {
+            $user->password = Hash::make($request->input('password'));
+        }
+
+        $user->save();
+
+        return response()->json(['message' => 'User récupéré', 'user' => $user], 200);
     }
 
     /**
