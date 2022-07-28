@@ -85,8 +85,8 @@ Route::delete('/events/{id}', [EventController::class, 'destroy'])
 
 
 
-Route::delete('/events/{id}', [EventController::class, 'destroy.id'])
-    ->name('events.destroy.id');
+Route::delete('/events/{id}', [EventController::class, 'destroy'])
+    ->name('events.destroy');
 
 /* _________________________________SLOTS*/
 Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
@@ -115,12 +115,9 @@ Route::get('/event-users', [EventUserController::class, 'index'])
 Route::get('/event-users/{id}', [EventUserController::class, 'show'])
     ->name('event-users.show');
 
-Route::middleware(["auth:sanctum", "role:staff"])->get('/events/{id}', [EventController::class, 'show'])
-    ->name('events.show');
-
-
-Route::middleware("auth:sanctum")->post('/event-users', [EventUserController::class, 'store'])
+Route::post('/event-users', [EventUserController::class, 'store'])
     ->name('event-users.store');
+// middleware("auth:sanctum")-> // 
 
 /* _________________________________GROUP USER */
 
