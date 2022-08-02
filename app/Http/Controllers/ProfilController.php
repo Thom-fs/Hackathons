@@ -115,7 +115,7 @@ class ProfilController extends Controller
 
         $user->save();
 
-        return response()->json(['message' => 'User récupéré', 'user' => $user], 200);
+        return response()->json(['message' => 'Profil modifié', 'user' => $user], 200);
     }
 
     /**
