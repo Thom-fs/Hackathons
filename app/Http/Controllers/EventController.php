@@ -75,6 +75,13 @@ class EventController extends Controller
 
         $event = Event::find($event_id);
         $users = Event::find($event_id)->users()->orderBy('firstname')->get();
+        foreach ($users as $user) {
+            $user->role = $user->roles()->where("event_id", $event_id)->first();
+            if (!isset($user->role)) {
+                $user->role = ["Authorization" => null, "event_id" => $event_id, "user_id" => $user->id];
+            }
+        }
+
         return response()->json(['message' => 'Affichage du groupe', 'event' => $event, 'users' => $users], 200);
     }
 

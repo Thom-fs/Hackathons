@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -23,7 +25,6 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -34,7 +35,21 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'event_id' => 'required|integer',
+
+        ]);
+
+        $user = Auth::find();
+
+        $role = Role::create([
+            'user_id' => $user->id,
+            'event_id' => $request->event_id,
+            'Authorization' => 1,
+
+        ]);
+
+        return response()->json(['message' => 'Authorization créé', 'role' => $role], 201);
     }
 
     /**

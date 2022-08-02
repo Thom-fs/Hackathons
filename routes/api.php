@@ -101,7 +101,11 @@ Route::middleware("auth:sanctum")->post('/event-users', [EventUserController::cl
 Route::middleware("auth:sanctum")->get('/group-users/{group_id}', [GroupUserController::class, 'index'])
     ->name('group-users.index');
 
+<<<<<<< HEAD
 Route::middleware('auth:sanctum')->post('/group-users', [GroupUserController::class, 'store'])
+=======
+Route::middleware("auth:sanctum")->post('/group-users', [GroupUserController::class, 'store'])
+>>>>>>> d54249e1597ad72df2b4aaa130200bf1e6599133
     ->name('group-users.store');
 
 
@@ -123,6 +127,21 @@ Route::middleware("auth:sanctum")->get('/my-profile', [ProfilController::class, 
 Route::middleware("auth:sanctum")->put('/update-profile', [ProfilController::class, 'update'])
     ->name('update-profile.update');
 
+<<<<<<< HEAD
+=======
+
+
+/* _________________________________Authentification*/
+
+// Attribution du role admin
+// Route::middleware((['auth', 'role:admin']))->group(function () {
+
+// });
+
+Route::middleware("auth:sanctum")->post('/roles', [ProfilController::class, 'store'])
+    ->name('roles.store');
+
+>>>>>>> d54249e1597ad72df2b4aaa130200bf1e6599133
 /*modification profil*/
 
 Route::middleware("auth:sanctum")->post('/modifyProfil', [ModifyProfilController::class, 'store'])
