@@ -115,7 +115,7 @@ Route::get('/event-users', [EventUserController::class, 'index'])
 Route::get('/event-users/{id}', [EventUserController::class, 'show'])
     ->name('event-users.show');
 
-Route::post('/event-users', [EventUserController::class, 'store'])
+Route::middleware("auth:sanctum")->post('/event-users', [EventUserController::class, 'store'])
     ->name('event-users.store');
 // middleware("auth:sanctum")-> // 
 
@@ -127,7 +127,7 @@ Route::post('/event-users', [EventUserController::class, 'store'])
 Route::get('/group-users/{group_id}', [GroupUserController::class, 'index'])
     ->name('group-users.index');
 
-Route::post('/group-users', [GroupUserController::class, 'store'])
+Route::middleware("auth:sanctum")->post('/group-users', [GroupUserController::class, 'store'])
     ->name('group-users.store');
 
 
