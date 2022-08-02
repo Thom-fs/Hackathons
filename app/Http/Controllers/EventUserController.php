@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\EventUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,9 +44,8 @@ class EventUserController extends Controller
             $request->validate([
                 'event_id' => 'required|integer',
             ]);
-
+            $user_id = Auth::id();
             $event_user = EventUser::create([
-
                 'user_id' => Auth::id(),
                 'event_id' => $request->event_id,
             ]);
