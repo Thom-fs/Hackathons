@@ -75,18 +75,10 @@ class RegisterController extends Controller
 
         ]);
 
-        // on a ecrit des folies ici, plein de test 
-        // $role = Role::create([
-        //     'user_id' => $user->id,
-        //     'event_id' => $data['event_id'],
-        //     'Authorization' => 1,
-        // ]);
 
-        // $eventUser = EventUser::create([
-        //     'user_id' => $user->id,
-        //     'event_id' => $data['event_id'],
-        // ]);
-
-        // return response()->json(["eventuUser" => $eventUser, "role" => $role], 201);
+        $eventUser = EventUser::create([
+            'user_id' => $user->id,
+            'event_id' => $data['event_id'],
+        ]);
     }
 }

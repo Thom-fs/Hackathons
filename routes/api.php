@@ -6,7 +6,6 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\GroupUserController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\ModifyProfilController;
 use App\Http\Controllers\AbilitiesController;
 use App\Http\Controllers\EventUserController;
 use App\Http\Controllers\RunningOrderController;
@@ -101,11 +100,7 @@ Route::middleware("auth:sanctum")->post('/event-users', [EventUserController::cl
 Route::middleware("auth:sanctum")->get('/group-users/{group_id}', [GroupUserController::class, 'index'])
     ->name('group-users.index');
 
-<<<<<<< HEAD
-Route::middleware('auth:sanctum')->post('/group-users', [GroupUserController::class, 'store'])
-=======
 Route::middleware("auth:sanctum")->post('/group-users', [GroupUserController::class, 'store'])
->>>>>>> d54249e1597ad72df2b4aaa130200bf1e6599133
     ->name('group-users.store');
 
 
@@ -139,16 +134,7 @@ Route::middleware("auth:sanctum")->put('/update-profile', [ProfilController::cla
 Route::middleware("auth:sanctum")->post('/roles', [ProfilController::class, 'store'])
     ->name('roles.store');
 
-/*modification profil*/
 
-Route::middleware("auth:sanctum")->post('/modifyProfil', [ModifyProfilController::class, 'store'])
-    ->name('modifyProfil.store');
-
-Route::middleware("auth:sanctum")->get('/modifyProfil/{id}', [ModifyProfilController::class, 'show'])
-    ->name('modifyProfil.show');
-
-Route::middleware("auth:sanctum")->post('/upload-picture', [ModifyProfilController::class, 'store'])
-    ->name('PictureUpload.store');
 
 /*Les compétences*/
 
