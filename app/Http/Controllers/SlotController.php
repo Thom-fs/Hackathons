@@ -14,11 +14,11 @@ class SlotController extends Controller
      */
     /* Lister un slot */
 
-    public function index()
+    public function index($event_id)
     {
-        $slots = Slot::all();
+        $slots = Slot::where('event_id', $event_id)->get();
 
-        return response()->json(["slots" => $slots]);
+        return response()->json(["message" => "Affichage des créneaux de l'évenement", "slots" => $slots]);
     }
 
     /**

@@ -62,22 +62,22 @@ Route::middleware('auth:sanctum')->delete('/events/{id}', [EventController::clas
     ->name('events.destroy');
 
 /* _________________________________SLOTS*/
-Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
+Route::get('/events/{event_id}/slots', [SlotController::class, 'index'])->name('slots.index');
 
-Route::middleware('auth:sanctum')->post('/slots', [SlotController::class, 'store'])->name('slots.store');
+Route::post('/slots', [SlotController::class, 'store'])->name('slots.store');
 
 /* _________________________________GROUPS*/
 
 /**
  * La route "groups.index" donne la liste des groupes liés à l'événement consulté, on lui passe donc event_id en argument {id}
  */
-Route::middleware("auth:sanctum")->get('/events/{event_id}/groups', [GroupController::class, 'index'])
+Route::get('/events/{event_id}/groups', [GroupController::class, 'index'])
     ->name('groups.index');
 
-Route::middleware("auth:sanctum")->get('/groups/{group_id}', [GroupController::class, 'show'])
+Route::get('/groups/{group_id}', [GroupController::class, 'show'])
     ->name('groups.show');
 
-Route::middleware('auth:sanctum')->post('/groups', [GroupController::class, 'store'])
+Route::post('/groups', [GroupController::class, 'store'])
     ->name('groups.store');
 
 
